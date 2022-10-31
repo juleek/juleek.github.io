@@ -1,6 +1,6 @@
 title: Job Sheduler
 
-For receiving data from sensors every day at the exaxt time you need to use [Cron](https://en.wikipedia.org/wiki/Cron) to shedule jobs.
+For receiving data from sensors every day at the exact time you need to use [Cron](https://en.wikipedia.org/wiki/Cron) to shedule jobs.
 
 
 
