@@ -1,0 +1,67 @@
+title: Setup Telegram
+
+### Create Bot
+
+Use Bot Father in Telegram: `/newbot`and add it to group.
+
+Outcomes:
+
+* **Tokens**:
+    * for `Bot_name`: `1111111111111111111111`
+    * for `Group_name`, chat_id: `-222222`
+
+Telegram Webhook allows you to create a https server and receive incoming updates. Your bot will listen for updates on this server and will be able to send updates to you via Telegram.
+
+### Webhook operations
+
+* **Set webhook**:
+
+    === "Without certificate"
+        ``` bash
+        curl -v -X POST "https://api.telegram.org/bot1111111111111111111111/setWebhook" \
+        -H "Content-Type: application/json" --data '{ "url": "https://your_ip" }' # (1)!
+        ```
+
+        1. HTTPS url must be provided for webhook. So, we need to run private/standalone https serve following the instruction below.
+
+    === "With (self-signed) certificate"
+        ```bash
+        openssl req -newkey rsa:2048 -sha256 -nodes -keyout ~/devel/key.pem -x509 -days 365 -out ~/devel/cert.pem -subj "/C=NG/ST=Lagos/L=Lagos/O=YOUR_ORG_NAME_HERE/CN=your_ip"
+
+        curl -F "url=https://your_ip" \
+             -F "certificate=./cert.pem" \
+             https://api.telegram.org/bot1111111111111111111111/setWebhook
+        ```
+Webhook options:
+
+* **Get webhook info**: `curl -v "https://api.telegram.org/bot1111111111111111111111/getWebhookInfo"`
+
+* **Delete webhook**: `curl -v "https://api.telegram.org/bot1111111111111111111111/deleteWebhook"`
+
+??? info "Test webhook via private/standalone https server"
+
+    * Run server on VM:
+        ```python linenums="1" title="sudo python3"
+        from http.server import HTTPServer, BaseHTTPRequestHandler
+        import ssl
+
+        class PrintingHandler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                print(f'ip: {self.client_address}, requestline: {self.requestline}\n\npath: {self.path}\n\nheaders: {self.headers}')
+            def do_POST(self):
+                rawData = self.rfile.read(int(self.headers['content-length'])).decode('utf-8')
+                print(f'ip: {self.client_address}, requestline: {self.requestline}\n\npath: {self.path}\n\nheaders: {self.headers}')
+                print(rawData)
+
+        httpd = HTTPServer(('0.0.0.0', 443), PrintingHandler)
+        sslctx = ssl.SSLContext()
+        sslctx.load_cert_chain('./cert.pem', "./key.pem", "1234")
+        httpd.socket = sslctx.wrap_socket(httpd.socket, server_side=True)
+        httpd.serve_forever()
+        ```
+    * after you created https server, in telegram app: find bot, write it
+
+### Send message
+```
+curl "https://api.telegram.org/bot1111111111111111111111/sendMessage?chat_id=--222222&text={text}"
+```
