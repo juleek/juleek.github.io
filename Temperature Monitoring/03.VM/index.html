@@ -1,0 +1,778 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02.RaspberryPiSetup/">
+      
+      
+        <link rel="next" href="../04.GoogleCloud/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>03. VM - My Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Blog" class="md-header__button md-logo" aria-label="My Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03. VM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../01.Intro/" class="md-tabs__link md-tabs__link--active">
+        Temperature Monitoring
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Blog" class="md-nav__button md-logo" aria-label="My Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Temperature Monitoring
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Temperature Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Intro/" class="md-nav__link">
+        01. Intro / Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.RaspberryPiSetup/" class="md-nav__link">
+        02. Raspberry Pi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          03. VM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        03. VM
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-vm" class="md-nav__link">
+    Create VM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allocate-ip-address" class="md-nav__link">
+    Allocate IP address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-the-vm" class="md-nav__link">
+    Setup the VM
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup the VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialise-users" class="md-nav__link">
+    Initialise users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ssh-access" class="md-nav__link">
+    Setup SSH access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-rpi-user" class="md-nav__link">
+    Setup rpi user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-from-local-host-to-the-device" class="md-nav__link">
+    Connect from local host to the device
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.GoogleCloud/" class="md-nav__link">
+        04. Google Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.Telegram/" class="md-nav__link">
+        05. Telegram
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-vm" class="md-nav__link">
+    Create VM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allocate-ip-address" class="md-nav__link">
+    Allocate IP address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-the-vm" class="md-nav__link">
+    Setup the VM
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup the VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialise-users" class="md-nav__link">
+    Initialise users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ssh-access" class="md-nav__link">
+    Setup SSH access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-rpi-user" class="md-nav__link">
+    Setup rpi user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-from-local-host-to-the-device" class="md-nav__link">
+    Connect from local host to the device
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="vm"><strong>VM</strong><a class="headerlink" href="#vm" title="Permanent link">&para;</a></h1>
+<p>Prerequisites:</p>
+<ul>
+<li>I assume that you have Google Cloud account and</li>
+<li><code>gcloud</code> CLI</li>
+</ul>
+<h2 id="create-vm"><strong>Create VM</strong><a class="headerlink" href="#create-vm" title="Permanent link">&para;</a></h2>
+<p>In this section, I will describe how to list and choose parameters required to create a VM instance, and then create it.</p>
+<ol>
+<li>
+<p>Authenticate in Google Cloud &mdash; <code>gcloud auth login</code></p>
+</li>
+<li>
+<p>You can set default project with <code>gcloud config set project project_name</code>, and unset it
+   with <code>gcloud config unset project</code>.</p>
+</li>
+<li>
+<p>Choose region and zone</p>
+<p>List regions along with available resources &mdash; <code>gcloud compute regions list --project project_name</code></p>
+<p>List zones &mdash; <code>gcloud compute zones list --project project_name</code></p>
+<p><a href="https://cloud.withgoogle.com/region-picker/"><strong>Region picker</strong></a> &mdash; allows to pick the best region
+according to multiple metrics (compute price &amp; latency).</p>
+</li>
+<li>
+<p>Set default regions and zones for project:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>project-info<span class="w"> </span>add-metadata<span class="w">                                                       </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>--metadata<span class="w"> </span>google-compute-default-region<span class="o">=</span>region_name,google-compute-default-zone<span class="o">=</span>zone_name<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>--project<span class="w"> </span>project_name
+</code></pre></div></p>
+</li>
+<li>
+<p>Choose image</p>
+<p>List images, families and image-projects &mdash;
+<code>gcloud compute images list --project project_name | grep -v -- "-arm64\|-pro-" | grep -i "PROJECT\|FAMILY\|ubuntu"</code></p>
+<p>Pick &ldquo;image project&rdquo; and &ldquo;image family&rdquo;.</p>
+</li>
+<li>
+<p>Choose disk</p>
+<details class="info inline end">
+<summary>Disk types and pricing</summary>
+<ul>
+<li><a href="https://cloud.google.com/compute/docs/disks#disk-types"><strong>Description of different disk types</strong></a>
+  (such as <code>standard</code>, <code>balanced</code>, <code>ssd</code>, etc&hellip;).</li>
+<li><a href="https://cloud.google.com/compute/disks-image-pricing#disk"><strong>Disks pricing</strong></a>.</li>
+</ul>
+</details>
+<p>Each VM instance has at least one disk attached to it.</p>
+<p>List disk types &mdash; <code>gcloud compute disk-types list --filter="zone:( ezone_name )" --project project_name</code></p>
+</li>
+<li>
+<p>Choose instance configuration</p>
+<ol>
+<li>
+<p class="annotate"><a href="https://cloud.google.com/compute/docs/machine-types">Choose machine family and series</a> based on its
+   capabilities (range of cores, CPU manufacturer, RAM, etc&hellip;). (1)</p>
+<ol>
+<li>N2D is good for confidential computing. <code>E2-standard</code> is good for cost. <code>E2-medium</code> is has even less
+   cost, but with shared core &amp; CPU bursting.</li>
+</ol>
+</li>
+<li>
+<p><a href="https://cloud.google.com/compute/docs/general-purpose-machines#e2-shared-core">Consider shared core &amp; CPU bursting</a> (machine series <code>e2-micro</code>, <code>e2-small</code>, <code>e2-medium</code>).</p>
+</li>
+<li>
+<p>Choose security features:</p>
+<ul>
+<li><a href="https://cloud.google.com/compute/confidential-vm/docs/about-cvm">Confidential computing</a>
+  (machine series <code>N2D</code>).</li>
+<li><a href="https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#linux">Shielded VM</a>
+  (secure boot, UEFI, TPM, Integrity monitoring).<ul>
+<li><a href="https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts">List of images with Shielded VM support</a>. If the image supports Shielded VM features,
+  <a href="https://cloud.google.com/compute/docs/instances/create-start-instance#gcloud">the following line appears in the output of</a>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gcloud compute images describe IMAGE_NAME --project=project_name
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>type: UEFI_COMPATIBLE
+</code></pre></div></li>
+<li>Use these option during VM creation:
+  <code>--shielded-integrity-monitoring</code>, <code>--shielded-secure-boot</code>, <code>--shielded-vtpm</code> to enable it.
+  <a href="https://cloud.google.com/compute/shielded-vm/docs/modifying-shielded-vm">Or this command</a> to enable
+  Shielded VM features in already existing VM.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Check availability in chosen region &mdash;
+   <code>gcloud compute machine-types list --filter="zone:( zone_name )" --project project_name</code>.</p>
+</li>
+<li>
+<p>Take into account pricing:</p>
+<ul>
+<li><a href="https://cloud.google.com/compute/all-pricing">Pricing of machines, disks, GPUs, etc&hellip;</a></li>
+<li><a href="https://cloud.google.com/products/calculator">Google Cloud Pricing Calculator</a>.</li>
+<li>Consider 1 &amp; 3 year commitments.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>Finally, now we have all information to <a href="https://cloud.google.com/sdk/gcloud/reference/compute/instances/create">create our VM instance</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>create<span class="w"> </span>vm_name<span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--image-family<span class="w">   </span>image_family<span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--image-project<span class="w">  </span>image_project<span class="w">           </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--boot-disk-size<span class="w"> </span>disk_size<span class="w">               </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--boot-disk-type<span class="w"> </span>disk_type<span class="w">               </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--machine-type<span class="w">   </span>machine_type<span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--shielded-integrity-monitoring<span class="w">          </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>--shielded-secure-boot<span class="w">                   </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span>--project<span class="w"> </span>project_name
+</code></pre></div>
+<details class="info">
+<summary>Other VM CRUD Doperations</summary>
+<ul>
+<li><a href="https://cloud.google.com/compute/docs/instances/deleting-instance">Delete instance</a>: <code>gcloud compute instances delete vm_name</code></li>
+<li><a href="https://cloud.google.com/compute/docs/instances/stop-start-instance#stop_a_vm">Stop instance</a>: <code>gcloud compute instances stop vm_name</code></li>
+<li><a href="https://cloud.google.com/compute/docs/instances/stop-start-instance#starting_a_stopped_instance">Start instance</a>: <code>gcloud compute instances start vm_name</code></li>
+</ul>
+</details>
+<hr />
+<h2 id="allocate-ip-address"><strong>Allocate IP address</strong><a class="headerlink" href="#allocate-ip-address" title="Permanent link">&para;</a></h2>
+<p><a href="https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#reserve_new_static">Allocate an IP address:</a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>addresses<span class="w"> </span>create<span class="w"> </span>vm_name-ip<span class="w"> </span>--region<span class="o">=</span>region_name<span class="w"> </span>--project<span class="w"> </span>project_name
+</code></pre></div></p>
+<p>Delete existing ephemeral IP address:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>delete-access-config<span class="w"> </span>vm_name<span class="w"> </span>--access-config-name<span class="o">=</span><span class="s2">&quot;external-nat&quot;</span><span class="w"> </span><span class="c1"># (1)!</span>
+</code></pre></div>
+<ol>
+<li>Where <code>external-nat</code> is a value of the <code>name</code> field from output of:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>describe<span class="w"> </span>vm_name
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>networkInterfaces:
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-<span class="w"> </span>accessConfigs:
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>-<span class="w"> </span>kind:<span class="w"> </span>compute#accessConfig
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>name:<span class="w"> </span>external-nat
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>natIP:<span class="w"> </span>_________
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>networkTier:<span class="w"> </span>PREMIUM
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span>type:<span class="w"> </span>ONE_TO_ONE_NAT
+</code></pre></div></li>
+</ol>
+<p>Finally, <a href="https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#IP_assign">assign IP address to VM:</a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>add-access-config<span class="w"> </span>vm_name<span class="w"> </span>--access-config-name<span class="o">=</span><span class="s2">&quot;external-nat&quot;</span><span class="w"> </span>--address<span class="o">=(</span>gcloud<span class="w"> </span>compute<span class="w"> </span>addresses<span class="w"> </span>list<span class="w"> </span>--filter<span class="o">=</span><span class="s2">&quot;name=(&#39;vm_name-ip&#39;)&quot;</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;get(address)&quot;</span><span class="o">)</span>
+</code></pre></div></p>
+<details class="info">
+<summary>Other IP CRUD operations</summary>
+<ul>
+<li>List IP addresses: <code>gcloud compute addresses list</code></li>
+<li>Delete IP address: <code>gcloud compute addresses delete vm_name-ip</code></li>
+</ul>
+</details>
+<hr />
+<h2 id="setup-the-vm"><strong>Setup the VM</strong><a class="headerlink" href="#setup-the-vm" title="Permanent link">&para;</a></h2>
+<h3 id="initialise-users">Initialise users<a class="headerlink" href="#initialise-users" title="Permanent link">&para;</a></h3>
+<p>Open terminal in browser, add users and install packages:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>adduser<span class="w"> </span>--gecos<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>--disabled-password<span class="w"> </span>user
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>sudo<span class="w"> </span>user
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>full-upgrade<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nano<span class="w"> </span>git<span class="w"> </span>locate
+</code></pre></div>
+<p>Allow password-less <code>sudo</code>:</p>
+<div class="highlight"><span class="filename">sudo visudo</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gd">- %sudo   ALL=(ALL:ALL) ALL</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="gi">+ %sudo   ALL=(ALL:ALL) NOPASSWD:ALL</span>
+</code></pre></div>
+<h3 id="setup-ssh-access">Setup SSH access<a class="headerlink" href="#setup-ssh-access" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>user<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;mkdir -p ~/.ssh &amp;&amp; nano ~/.ssh/authorized_keys&quot;</span>
+</code></pre></div></td></tr></table></div>
+And copy your local ssh public key: <code>cat ~/.ssh/id_ed25519.pub</code> or <code>ssh-add -L</code> to <code>~/.ssh/authorized_keys</code>.</p>
+<p>Get host&rsquo;s ssh key fingerprint (to compare it with what local ssh will print when you connect to the VM from local host):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ssh-keygen -lf &lt;(ssh-keyscan localhost 2&gt;/dev/null)
+</code></pre></div></p>
+<ol>
+<li>where the IP comes from output of: <code>gcloud compute addresses list --filter="name=('vm_name-ip')" --format="get(address)"</code></li>
+</ol>
+<h3 id="setup-rpi-user">Setup <code>rpi</code> user<a class="headerlink" href="#setup-rpi-user" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p class="annotate"><code>sudo adduser --gecos "" --disabled-password rpi</code> (1)</p>
+<ol>
+<li>Add the user</li>
+</ol>
+</li>
+<li>
+<p class="annotate"><code>mkdir -p  ~/.ssh &amp;&amp; nano ~/.ssh/authorized_keys &amp;&amp; exit</code> (1)</p>
+<ol>
+<li>Populate <code>~/.ssh/authorized_keys</code> with public key of pi user on RaspberryPi</li>
+</ol>
+</li>
+<li>
+<p class="annotate"><code>sudo usermod -s /usr/sbin/nologin rpi</code> (1)</p>
+<ol>
+<li>Set <code>nologin</code> shell to the <code>rpi</code> user</li>
+</ol>
+</li>
+</ul>
+<p>Tweak SSH config on the VM:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">sudo nano /etc/ssh/sshd_config</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>Match User rpi
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>   PasswordAuthentication no
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>   AllowTcpForwarding remote # yes
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>   AllowStreamLocalForwarding no
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>   X11Forwarding no
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>   PermitTunnel no
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>   GatewayPorts no
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>   AllowAgentForwarding no
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>   PermitOpen localhost:_____
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>   ForceCommand echo &#39;This account can only be used for reverse ssh tunnelling&#39;
+</code></pre></div></td></tr></table></div>
+<h3 id="connect-from-local-host-to-the-device">Connect from local host to the device<a class="headerlink" href="#connect-from-local-host-to-the-device" title="Permanent link">&para;</a></h3>
+<p class="annotate">Now you can use this VM IP as a <a href="https://www.redhat.com/sysadmin/ssh-proxy-bastion-proxyjump">bastion host</a>
+(1) to connect to RaspberryPi.</p>
+<ol>
+<li>
+<blockquote>
+<p>Baston hosts are usually public-facing, hardened systems that serve as an entrypoint to systems behind
+a firewall or other restricted location, and they are especially popular with the rise of cloud computing</p>
+</blockquote>
+</li>
+</ol>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.top", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../assets/javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>
